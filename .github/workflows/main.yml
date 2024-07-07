@@ -20,7 +20,7 @@ jobs:
         with:
           context: ./src
           push: true
-          files: ./src/Review-Filmes.Web/Dockerfile
+          files: src/Review-Filmes.Web/Dockerfile
           tags: |
             isadoraxavierr/review-filmes:v${{ github.run_number }}
             isadoraxavierr/review-filmes:latest
