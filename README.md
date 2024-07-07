@@ -35,3 +35,5 @@ https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/amazon-e
 ```
 kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode
 ```
+# Documentação desafio - FilmReviews Inc 
+## Deploy local no kubernetes - k3d
