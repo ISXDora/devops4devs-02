@@ -8,17 +8,22 @@ jobs:
   CI:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do código fonte
+      - name: Checkout code
         uses: actions/checkout@v4.1.7
       - name: Login Docker
         uses: docker/login-action@v3.2.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Passo 1 
-        run: echo "Construir a imagem da aplicação"
-      - name: Passo 2
-        run: echo "Publicar a imagem no docker Hub"
+      - name: Build and Push image docker
+        uses: docker/build-push-action@v6
+        with:
+          context: ./src
+          push: true
+          files: ./src/Review-Filmes.Web/Dockerfile
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/reviewfilmes:v${{github.run_number}}
+            ${{ secrets.DOCKERHUB_USERNAME }}/reviewfilmes:latest
   CD:
     runs-on: ubuntu-latest
     needs: [CI]
