@@ -22,8 +22,8 @@ jobs:
           push: true
           files: ./src/Review-Filmes.Web/Dockerfile
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/review-filmes:v${{github.run_number}}
-            ${{ secrets.DOCKERHUB_USERNAME }}/review-filmes:latest
+            isadoraxavierr/review-filmes:v${{ github.run_number }}
+            isadoraxavierr/review-filmes:latest
   CD:
     runs-on: ubuntu-latest
     needs: [CI]
